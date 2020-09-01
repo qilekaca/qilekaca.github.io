@@ -1,36 +1,69 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+# # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Node.js CI
+# name: Node.js CI
 
+# on:
+#   push:
+#     branches: [master]
+#   pull_request:
+#     branches: [master]
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+
+#     strategy:
+#       matrix:
+#         node-version: [10.x, 12.x, 14.x]
+
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Use Node.js ${{ matrix.node-version }}
+#         uses: actions/setup-node@v1
+#         with:
+#           node-version: ${{ matrix.node-version }}
+#       - run: npm install
+#       - run: npm run docs:build --if-present
+#       - run: npm test
+                  
+#       - name: Deploy 🚀
+#         uses: JamesIves/github-pages-deploy-action@3.5.9
+#         with:
+#           GITHUB_TOKEN: ${{ secrets.DEPLOY_KEY }}
+#           BRANCH: gh-pages # The branch the action should deploy to.
+#           FOLDER: docs/.vuepress/dist # The folder the action should deploy.
+
+
+name: Deploy GitHub Pages
+
+# 触发条件：在 push 到 master 分支后
 on:
   push:
-    branches: [master]
-  pull_request:
-    branches: [master]
+    branches:
+      - master
 
+# 任务
 jobs:
-  build:
+  build-and-deploy:
+    # 服务器环境：最新版 Ubuntu
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [10.x, 12.x, 14.x]
-
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      # 拉取代码
+      - name: Checkout
+        uses: actions/checkout@v2
         with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm install
-      - run: npm run docs:build --if-present
-      - run: npm test
-                  
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@3.5.9
+          persist-credentials: false
+
+      # 生成静态文件
+      - name: Build
+        run: npm install && npm run docs:build
+
+      # 部署到 GitHub Pages
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
-          GITHUB_TOKEN: ${{ secrets.DEPLOY_KEY }}
-          BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: docs/.vuepress/dist # The folder the action should deploy.
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: docs/.vuepress/dist
 
