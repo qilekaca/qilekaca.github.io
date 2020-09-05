@@ -8,7 +8,7 @@ tags:
   - vue
 ---
 
-> 此项目为慕课网课程
+[项目地址](https://github.com/qilekaca/Travel)
 
 ## 前期准备
 
@@ -364,40 +364,83 @@ city 页面共有四个组件 city-header city-search city-list city-alphabet。
 当滚动右侧 ABCD 的时候左侧页面也可以进行相应的滚动。继续在子组件中绑定滚动事件的监听。`touchstart` `touchmove` `touchend` 要确定这三个事件的执行顺序，还需要定义一个标示位。`touchStatus` 默认这个值为 `false` 当开始滑动的时候变为 `true` 滑动结束的时候为 `false`，只有当 `touchStatus` 的值为 `true` 的时候才开始执行 `handleTouchMove` 函数。
 
 但是如何获取右边滚动到那个字母呢  
-首先获取字母 A 距离页面顶部的高，然后获取当前手指距离页面顶部的高，两个高相减除以每一个字母的高度即可获取到当前手指在第几个字母的位置了。知道当前字母在那个位置还需要有一个数组，用来保存这 26 个字母。可以使用计算属性获取这 26 个字母的数组。获取完这个数组可以将组件遍历的 cities 变成这个数组。
+首先获取字母 A 距离页面顶部的高，然后获取当前手指距离页面顶部的高，两个高相减除以每一个字母的高度即可获取到当前手指在第几个字母的位置了。知道当前字母在那个位置还需要有一个数组，用来保存这 26 个字母。可以使用计算属性获取这 26 个字母的数组。
 
-给每一个 li 标签添加一个 ref，  
-`const startY = this.$refs['A'][0].offsetTop`  
-这样就可以获取到这个元素距离 search 组件底部的高度了。而且会根据设备不同返回不同的结果  
-`const touchY = e.touches[0].clientY - 79`  
-touchY 就是获取的当前手指获取的距离手机顶部的距离所以还需要减去一个 79（header+search 组件的高度，79 是写死的不会根据手机改变）  
-`const index = Math.floor((touchY - startY) / 20)`  
-index 就是手指所在的第几个字母  
-`this.$emit('change', this.letters[index])`  
-将 index 传递给 list 组件，还要判断一下 index 在传递
-
-可以给 `v-for` 循环绑定一个点击事件，并且可以通过 `e.target.innerText` 获取到点击的内容
-
-```html
-<ul class="list">
-  <!-- for..in适合遍历对象 for...of适合遍历数组 -->
-  <li
-    class="item"
-    v-for="(item, key) in cities"
-    :key="key"
-    @click="handleLetterClick"
-  >
-    {{ key }}
-  </li>
-</ul>
+```vue
+<template>
+  <ul class="list">
+    <li
+      class="item"
+      v-for="item of letters"
+      :key="item"
+      :ref="item"
+      @touchstart.prevent="handleTouchStart"
+      @touchmove="handleTouchMove"
+      @touchend="handleTouchEnd"
+      @click="handleLetterClick"
+    >
+      {{ item }}
+    </li>
+  </ul>
+</template>
 ```
 
-```js
-methods: {
+给每一个 li 标签添加一个 ref，`const startY = this.$refs['A'][0].offsetTop` 这样就可以获取到这个元素距离 search 组件底部的高度了。而且会根据设备不同返回不同的结果 `const touchY = e.touches[0].clientY - 79` touchY 就是获取的当前手指获取的距离手机顶部的距离所以还需要减去一个 79（header+search 组件的高度，79 是写死的不会根据手机改变）`const index = Math.floor((touchY - startY) / 20)` index 就是手指所在的第几个字母 `this.$emit('change', this.letters[index])` 将 index 传递给 city-list 组件，还要判断一下 index 在传递`(index >= 0 && index < this.letters.length)`。
+
+```vue
+<script>
+export default {
+  name: "CityAlphabet",
+  props: {
+    cities: Object,
+  },
+  computed: {
+    letters() {
+      const letters = [];
+      for (let i in this.cities) {
+        letters.push(i);
+      }
+      return letters;
+      // 返回的结果['A','B','C',]
+    },
+  },
+  data() {
+    return {
+      touchStatus: false,
+      startY: 0,
+      timer: null,
+    };
+  },
+  updated() {
+    this.startY = this.$refs["A"][0].offsetTop;
+  },
+  methods: {
     handleLetterClick(e) {
-      console.log(e.target.innerText)
-    }
-}
+      this.$emit("change", e.target.innerText);
+    },
+    handleTouchStart() {
+      this.touchStatus = true;
+    },
+    handleTouchMove(e) {
+      if (this.touchStatus) {
+        if (this.timer) {
+          clearTimeout(this.timer);
+        }
+        this.timer = setTimeout(() => {
+          const touchY = e.touches[0].clientY - 79;
+          const index = Math.floor((touchY - this.startY) / 20);
+          if (index >= 0 && index < this.letters.length) {
+            this.$emit("change", this.letters[index]);
+          }
+        }, 16);
+      }
+    },
+    handleTouchEnd() {
+      this.touchStatus = false;
+    },
+  },
+};
+</script>
 ```
 
 #### 完整代码
@@ -618,10 +661,15 @@ export default {
 
 ## 性能优化
 
+### 函数节流
+
+> 给 handleTouchMove 添加函数节流，因为当每次发生手指滑动的时候都去触发 handleTouchMove 函数会造成资源的不必要浪费，所以可以给 handleTouchMove 函数添加一个节流，使它每隔 16ms 执行一次。
+
 ```javascript
+// 原始版本
 handleTouchMove(e) {
       if (this.touchStatus) {
-        // 每次滑动都会调用这个函数，但是startY是一个固定值
+        // 可以发现每次执行这个函数都会重新计算一下这个`startY`
         // 所以此处可以优化，可以将startY放入updated钩子函数中
         const startY = this.$refs['A'][0].offsetTop
         const touchY = e.touches[0].clientY - 79
@@ -631,8 +679,90 @@ handleTouchMove(e) {
         }
       }
     }
+// 节流版本
+handleTouchMove(e) {
+      if (this.touchStatus) {
+        if (this.timer) {
+          clearTimeout(this.timer)
+        }
+        this.timer = setTimeout(() => {
+          const touchY = e.touches[0].clientY - 79
+          const index = Math.floor((touchY - this.startY) / 20)
+          if (index >= 0 && index < this.letters.length) {
+            this.$emit('change', this.letters[index])
+          }
+        }, 16)
+      }
+    }
 ```
 
-可以发现每次执行这个函数都会重新计算一下这个`startY` 这里就可以进行优化。这里可以使用 vue 的生命周期函数 updated(){}（此处为什么使用 update 生命周期钩子函数）  
-函数截流  
-定义一个 timer，实函数每 16 毫秒执行一次
+### 使用 keep-alive
+
+当用户在首页滑动进入 detail 页面查看详情之后重新回到 home 页面，此时会重新获取首页的数据，这种用户体验并不好，当用户重新回到 home 页面时，home 页面应该还在用户之前所在的位置。keep-alive 正是为此设计的。只需要在需要缓存的组件外面包裹上 keep-alive 标签就行了。
+
+```vue
+<template>
+  <div id="app">
+    <keep-alive exclude="Detail">
+      <router-view />
+    </keep-alive>
+  </div>
+</template>
+```
+
+> 将不需要被缓存的组件添加到 exclude 中就行了。
+
+### 函数防抖
+
+提到函数节流就不得提到函数防抖。
+函数防抖主要使用在
+
+- 给按钮加函数防抖防止表单多次提交
+- 对于输入框连续输入进行 ajax 验证时，用函数防抖能有效减少请求次数
+- 判断 scroll 是否滑倒底部，滚动事件+函数防抖
+
+函数节流主要使用在
+
+- 游戏中刷新率
+- dom 元素拖拽
+- canvas 画笔功能
+
+```js
+// 函数防抖的实现
+function debounce(fn, wait) {
+  var timer = null;
+
+  return function () {
+    var context = this,
+      args = arguments;
+
+    // 如果此时存在定时器的话，则取消之前的定时器重新记时
+    if (timer) {
+      clearTimeout(timer);
+      timer = null;
+    }
+
+    // 设置定时器，使事件间隔指定事件后执行
+    timer = setTimeout(() => {
+      fn.apply(context, args);
+    }, wait);
+  };
+}
+
+// 函数节流的实现;
+function throttle(fn, delay) {
+  var preTime = Date.now();
+
+  return function () {
+    var context = this,
+      args = arguments,
+      nowTime = Date.now();
+
+    // 如果两次时间间隔超过了指定时间，则执行函数。
+    if (nowTime - preTime >= delay) {
+      preTime = Date.now();
+      return fn.apply(context, args);
+    }
+  };
+}
+```
