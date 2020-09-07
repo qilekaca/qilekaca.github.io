@@ -175,12 +175,15 @@ app.use(historyApiFallback());
 
 ```conf
 // todolist.conf
+upstream pm.server {
+  server 127.0.0.1:8080
+}
 server {
   listen 80;
-  server_name xxx.com;
+  server_name 188131.188.209;
 
-  location /todo/ {
-    proxy_pass http://localhost:9000/;
+  location / {
+    proxy_pass http://pm.server;
     proxy_redirect off;
   }
 }
