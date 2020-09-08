@@ -66,6 +66,6 @@ module.exports = {
       },
     ],
     // author
-    author: "zhang wei",
+    author: "张伟",
   },
 };
