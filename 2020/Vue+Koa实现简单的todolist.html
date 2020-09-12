@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vue+Koa实现简单的todolist | Hello Vuepress</title>
+    <meta name="generator" content="VuePress 1.5.4">
+    
+    <meta name="description" content="Just playing around">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <link rel="preload" href="/assets/css/0.styles.36fffe06.css" as="style"><link rel="preload" href="/assets/js/app.a6896258.js" as="script"><link rel="preload" href="/assets/js/3.0446f327.js" as="script"><link rel="preload" href="/assets/js/1.13eb5d17.js" as="script"><link rel="preload" href="/assets/js/10.b4bf6fc5.js" as="script"><link rel="prefetch" href="/assets/js/11.e2fb2f76.js"><link rel="prefetch" href="/assets/js/12.bb08c9de.js"><link rel="prefetch" href="/assets/js/13.1b8d4731.js"><link rel="prefetch" href="/assets/js/14.c2745995.js"><link rel="prefetch" href="/assets/js/15.781e1cc5.js"><link rel="prefetch" href="/assets/js/16.7227a74b.js"><link rel="prefetch" href="/assets/js/17.6c2c1980.js"><link rel="prefetch" href="/assets/js/18.a4ef54f7.js"><link rel="prefetch" href="/assets/js/19.6750f6d2.js"><link rel="prefetch" href="/assets/js/20.da11396b.js"><link rel="prefetch" href="/assets/js/21.00767d0e.js"><link rel="prefetch" href="/assets/js/4.c839c6ab.js"><link rel="prefetch" href="/assets/js/5.742cd922.js"><link rel="prefetch" href="/assets/js/6.847f7817.js"><link rel="prefetch" href="/assets/js/7.a0f55dd7.js"><link rel="prefetch" href="/assets/js/8.75b3554e.js"><link rel="prefetch" href="/assets/js/9.c8c899e6.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.36fffe06.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-dad8a512><div data-v-dad8a512><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-dad8a512 data-v-dad8a512><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-64685f0e data-v-dad8a512 data-v-dad8a512><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>Hello Vuepress</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>张伟</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div class="hide" data-v-dad8a512><header class="navbar" data-v-dad8a512><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Hello Vuepress</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/前端/" class="nav-link"><i class="iconfont undefined"></i>
+  前端
+</a></li><li class="dropdown-item"><!----> <a href="/categories/全栈/" class="nav-link"><i class="iconfont undefined"></i>
+  全栈
+</a></li><li class="dropdown-item"><!----> <a href="/categories/云开发/" class="nav-link"><i class="iconfont undefined"></i>
+  云开发
+</a></li><li class="dropdown-item"><!----> <a href="/categories/webpack/" class="nav-link"><i class="iconfont undefined"></i>
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/categories/小程序/" class="nav-link"><i class="iconfont undefined"></i>
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/categories/部署/" class="nav-link"><i class="iconfont undefined"></i>
+  部署
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-api"></i>
+      项目
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="http://188.131.188.209/college" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  校园闲置交易程序
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="http://188.131.188.209/admin" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  校园闲置交易后台程序
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-mail"></i>
+      联系
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/qilekaca" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="/docs/contact/" class="nav-link"><i class="iconfont reco-wechat"></i>
+  微信
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-dad8a512></div> <aside class="sidebar" data-v-dad8a512><div class="personal-info-wrapper" data-v-ca798c94 data-v-dad8a512><!----> <h3 class="name" data-v-ca798c94>
+    张伟
+  </h3> <div class="num" data-v-ca798c94><div data-v-ca798c94><h3 data-v-ca798c94>9</h3> <h6 data-v-ca798c94>Article</h6></div> <div data-v-ca798c94><h3 data-v-ca798c94>10</h3> <h6 data-v-ca798c94>Tag</h6></div></div> <hr data-v-ca798c94></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/前端/" class="nav-link"><i class="iconfont undefined"></i>
+  前端
+</a></li><li class="dropdown-item"><!----> <a href="/categories/全栈/" class="nav-link"><i class="iconfont undefined"></i>
+  全栈
+</a></li><li class="dropdown-item"><!----> <a href="/categories/云开发/" class="nav-link"><i class="iconfont undefined"></i>
+  云开发
+</a></li><li class="dropdown-item"><!----> <a href="/categories/webpack/" class="nav-link"><i class="iconfont undefined"></i>
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/categories/小程序/" class="nav-link"><i class="iconfont undefined"></i>
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/categories/部署/" class="nav-link"><i class="iconfont undefined"></i>
+  部署
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-api"></i>
+      项目
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="http://188.131.188.209/college" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  校园闲置交易程序
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="http://188.131.188.209/admin" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  校园闲置交易后台程序
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-mail"></i>
+      联系
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/qilekaca" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="/docs/contact/" class="nav-link"><i class="iconfont reco-wechat"></i>
+  微信
+</a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-64685f0e data-v-dad8a512><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>Vue+Koa实现简单的todolist</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>张伟</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div data-v-dad8a512><main class="page"><div class="page-title" style="display:none;"><h1>Vue+Koa实现简单的todolist</h1> <div data-v-3b7f5bdf><i class="iconfont reco-account" data-v-3b7f5bdf><span data-v-3b7f5bdf>张伟</span></i> <i class="iconfont reco-date" data-v-3b7f5bdf><span data-v-3b7f5bdf>2020-06-27</span></i> <i class="iconfont reco-eye" data-v-3b7f5bdf><span id="/2020/Vue+Koa%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84todolist.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-3b7f5bdf><a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;"></a></span></i> <i class="iconfont reco-tag tags" data-v-3b7f5bdf><span class="tag-item" data-v-3b7f5bdf>Vue</span><span class="tag-item" data-v-3b7f5bdf>Node</span><span class="tag-item" data-v-3b7f5bdf>MySQL</span><span class="tag-item" data-v-3b7f5bdf>Docker</span></i></div></div> <div class="theme-reco-content content__default" style="display:none;"><h2 id="简介"><a href="#简介" class="header-anchor">#</a> 简介</h2> <p>已经使用 Vue 和云开发完成了好多内容，但是对于真实的前后端并没有实际的了解，所以希望通过一个简单的前后端分离的项目来理解。毫无疑问对于前端开发人员门槛最低的后端肯定是 Node。所以此项目前端使用 Vue 后端使用 Koa 来完成。要实现的功能也很简单，用户登录之后，可以进行 todo 的增删查改。后端数据库使用 MySQL。项目的结构基本就是在 Vue-cli 初始化的项目的根目录下创建一个 server 文件夹和 app.js 的项目入口文件。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// server文件夹的内容</span>
+config<span class="token punctuation">;</span> <span class="token comment">// 存放数据库的配置连接</span>
+controller<span class="token punctuation">;</span> <span class="token comment">// controller控制器</span>
+models<span class="token punctuation">;</span> <span class="token comment">// model模型</span>
+routes<span class="token punctuation">;</span> <span class="token comment">// route路由</span>
+schema<span class="token punctuation">;</span> <span class="token comment">// 数据库表结构</span>
+</code></pre></div><blockquote><p>此处的 server 文件夹的内容就可以很好的展示出 MVC 的 model 模型层和 controller 控制层</p></blockquote> <p>前端 ui 主要使用<a href="https://element.eleme.cn/#/zh-CN" target="_blank" rel="noopener noreferrer">element-ui<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>。后端需要用到的依赖 koa、koa-router、koa-jwt、koa2-cors、koa-static、mysql、sequelize。。。等。其中 sequelize 是用来操作数据库。开发后端的内容基本上类似于之前开发微信小程序的后台管理项目。koa 负责提供数据接口前端使用 ajax 发送请求。最后使用 docker 来部署项目。</p> <h2 id="开发步骤"><a href="#开发步骤" class="header-anchor">#</a> 开发步骤</h2> <h3 id="后端开发"><a href="#后端开发" class="header-anchor">#</a> 后端开发</h3> <p>先确定后端需要为前端提供的数据接口。后端需要提供的功能用户的登陆、todo 的增加、删除、查询、修改。以上功能需要在 controller 中定义。controller 通过 model 操作数据库。model 主要用来存放操作数据库相关的内容。routes 存放路由相关的内容(沟通前后端的关键)，config 存放数据库的配置文件。schema 数据库的库表结构。<strong>此处插入图片</strong>
+routes 路由设计</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// server/routes/api.js</span>
+<span class="token keyword">import</span> api <span class="token keyword">from</span> <span class="token string">&quot;../controllers/todolist.js&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> koaRouter <span class="token keyword">from</span> <span class="token string">&quot;koa-router&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token function">koaRouter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+router<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">&quot;/todolist/:id&quot;</span><span class="token punctuation">,</span> api<span class="token punctuation">.</span>getTodolist<span class="token punctuation">)</span><span class="token punctuation">;</span>
+router<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">&quot;/todolist&quot;</span><span class="token punctuation">,</span> api<span class="token punctuation">.</span>createTodolist<span class="token punctuation">)</span><span class="token punctuation">;</span>
+router<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token string">&quot;/todolist/:userId/:id&quot;</span><span class="token punctuation">,</span> api<span class="token punctuation">.</span>removeTodolist<span class="token punctuation">)</span><span class="token punctuation">;</span>
+router<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">&quot;/todolist/:userId/:id/:status&quot;</span><span class="token punctuation">,</span> api<span class="token punctuation">.</span>updateTodolist<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> router<span class="token punctuation">;</span>
+
+<span class="token comment">// server/routes/auth.js</span>
+<span class="token keyword">import</span> auth <span class="token keyword">from</span> <span class="token string">&quot;../controllers/user.js&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> koaRouter <span class="token keyword">from</span> <span class="token string">&quot;koa-router&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token function">koaRouter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+router<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">&quot;/user/:id&quot;</span><span class="token punctuation">,</span> auth<span class="token punctuation">.</span>getUserInfo<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 定义url的参数是id</span>
+router<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">&quot;/user&quot;</span><span class="token punctuation">,</span> auth<span class="token punctuation">.</span>postUserAuth<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> router<span class="token punctuation">;</span>
+</code></pre></div><h3 id="前端开发"><a href="#前端开发" class="header-anchor">#</a> 前端开发</h3> <p>前端开发与平时正常的 vue 开发无异，本项目使用 axios 进行数据请求，但是前端运行在 8080 端口，后端运行在 9000 端口，由于浏览器的同源策略会产生跨域问题。开发阶段使用 vue.config.js 配置 vue 进行代理。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 前端调用 this.$http.get('/api/todolist/' + this.id)</span>
+<span class="token comment">// 开发时可以使用 vue.config.js 做代理</span>
+<span class="token comment">// vue.config.js</span>
+<span class="token comment">// 配置完成后我们能够将外部的请求通过webpack转发给本地，也就能够将跨域请求变成同域请求了</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  productionSourceMap<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  devServer<span class="token operator">:</span> <span class="token punctuation">{</span>
+    proxy<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">&quot;/auth&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        target<span class="token operator">:</span> <span class="token string">&quot;http://localhost:9999&quot;</span><span class="token punctuation">,</span>
+        changeOrigin<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;/api&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        target<span class="token operator">:</span> <span class="token string">&quot;http://localhost:9999&quot;</span><span class="token punctuation">,</span>
+        changeOrigin<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="登陆功能"><a href="#登陆功能" class="header-anchor">#</a> 登陆功能</h3> <p>登陆使用<a href="https://jwt.io/" target="_blank" rel="noopener noreferrer">JSON-WEB-TOKEN<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>实现。</p> <blockquote><p>JSON-WEB-TOKEN 分三部分，头部信息+主体信息+密钥信息，其中主体传递的信息（是我们存放我们需要的信息的部分）是用 BASE64 编码的，所以很容易被解码，一定不能存放明文密码这种关键信息！替代地可以存放一些不是特别关键的信息，比如用户名这样能够做区分的信息。</p></blockquote> <h4 id="jwt-登陆的过程"><a href="#jwt-登陆的过程" class="header-anchor">#</a> jwt 登陆的过程</h4> <ol><li>用户输入用户名和密码，通过 https 加密发送请求给后端</li> <li>后端验证用户信息是否正确，正确返回 TOKEN 给客户端，不正确返回验证错误的信息</li> <li>登陆成功用户将 TOKEN 保存下来（localStorage、sessionStorage），之后在请求资源的时候，在请求头（Header）中带上 TOKEN 进行请求</li> <li>后端接收请求信息，验证 TOKEN 是否正确，正确则返回资源，否则返回错误信息。</li></ol> <blockquote><p>密码要使用 bcrypt，加密保存到数据库中。</p></blockquote> <p>签发 token</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> userToken <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> userInfo<span class="token punctuation">.</span>user_name<span class="token punctuation">,</span>
+  id<span class="token operator">:</span> userInfo<span class="token punctuation">.</span>id<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> secret <span class="token operator">=</span> <span class="token string">&quot;vue-koa-demo&quot;</span><span class="token punctuation">;</span> <span class="token comment">// 指定密钥，这是之后用来判断token合法性的标志</span>
+<span class="token keyword">const</span> token <span class="token operator">=</span> jwt<span class="token punctuation">.</span><span class="token function">sign</span><span class="token punctuation">(</span>userToken<span class="token punctuation">,</span> secret<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 签发token</span>
+</code></pre></div><p>完成后所有/api 的请求都需要进行 jwt 的验证，secret 密钥必须跟我们当初签发的 secret 一致</p> <div class="language-js extra-class"><pre class="language-js"><code>koa<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">&quot;/api&quot;</span><span class="token punctuation">,</span> <span class="token function">jwt</span><span class="token punctuation">(</span><span class="token punctuation">{</span> secret<span class="token operator">:</span> <span class="token string">&quot;vue-koa-demo&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> api<span class="token punctuation">.</span><span class="token function">routes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="跳转拦截"><a href="#跳转拦截" class="header-anchor">#</a> 跳转拦截</h4> <p>当用户直接在地址栏输入<code>/todolist</code>还是会跳转到 todolist 界面，所以还需要跳转拦截，借助 token 就可以实现。当用户没有 toekn 的时候不进行跳转，只有当用户有 token 的时候才进行正确的跳转。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// /src/router/index.js</span>
+router<span class="token punctuation">.</span><span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">to<span class="token punctuation">,</span> <span class="token keyword">from</span><span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> token <span class="token operator">=</span> sessionStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">&quot;demo-token&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>to<span class="token punctuation">.</span>path <span class="token operator">==</span> <span class="token string">&quot;/&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 如果是跳转到登录页的</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>token <span class="token operator">!=</span> <span class="token string">&quot;null&quot;</span> <span class="token operator">&amp;&amp;</span> token <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">next</span><span class="token punctuation">(</span><span class="token string">&quot;/todolist&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 如果有token就转向todolist不返回登录页</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 否则跳转回登录页</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>token <span class="token operator">!=</span> <span class="token string">&quot;null&quot;</span> <span class="token operator">&amp;&amp;</span> token <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 如果有token就正常转向</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token function">next</span><span class="token punctuation">(</span><span class="token string">&quot;/&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 否则跳转回登录页</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="部署"><a href="#部署" class="header-anchor">#</a> 部署</h2> <p>开发发的时候由于使用 webpack 进行请求代理的转发，所以看起来像是同域请求，但是 koa 和 vue 并没有真正的结合起来。我们可以将 vue 的静态文件交给 koa 托管，所有访问前端的请求走 koa 端，包括静态资源文件的请求也走 koa 端，将 koa 作为一个静态资源的服务器。（开发模式是 webpack 开启了一个服务器托管了 Vue 的资源和请求，现在生产模式下改成 Koa 托管 Vue 的资源和请求）。加入 koa-static。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// main.js</span>
+<span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;path&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> serve <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;koa-static&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">serve</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">&quot;dist&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// yarn build 之后生成 dist 文件夹</span>
+<span class="token comment">// 重新运行后端 yarn dev</span>
+<span class="token comment">// 之后打开 localhost:9000端口就可以直接访问网站了</span>
+</code></pre></div><p>到此基本完成了，但是当我们进入 todolist 页面之后刷新就会出现 404。这是因为我们使用了前端路由的 History 模式，刷新页面浏览器会去服务器访问这个页面的地址，但是服务器并没有配置这个地址的路由。可以借助 koa-history-api-fallback 这个中间键解决这个问题。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// main.js</span>
+<span class="token keyword">const</span> historyApiFallback <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;koa-history-api-fallback&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 一定要加在静态文件serve之前，放在api规则之后</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">historyApiFallback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="nginx"><a href="#nginx" class="header-anchor">#</a> Nginx</h3> <p>配置 Nginx 监听 80 端口，把访问我们指定域名的请求引导转发给 Koa 服务端。</p> <div class="language-conf extra-class"><pre class="language-text"><code>// todolist.conf
+upstream pm.server {
+  server 127.0.0.1:8080
+}
+server {
+  listen 80;
+  server_name 188131.188.209;
+
+  location / {
+    proxy_pass http://pm.server;
+    proxy_redirect off;
+  }
+}
+
+</code></pre></div><p>部署完成之后直接访问 <code>http://xxx.com/todo</code> 就可以访问项目了。</p></div> <footer class="page-edit" style="display:none;"><!----> <!----></footer> <!----> <!----> <!----></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/assets/js/app.a6896258.js" defer></script><script src="/assets/js/3.0446f327.js" defer></script><script src="/assets/js/1.13eb5d17.js" defer></script><script src="/assets/js/10.b4bf6fc5.js" defer></script>
+  </body>
+</html>
