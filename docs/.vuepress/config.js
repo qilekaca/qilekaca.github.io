@@ -42,8 +42,18 @@ module.exports = {
       // { text: "标签", link: "/tag/" },
       { text: "时间轴", link: "/timeline/", icon: "reco-date" },
       {
+        text: "项目",
+        items: [
+          { text: "校园闲置交易程序", link: "http://188.131.188.209/college" },
+          {
+            text: "校园闲置交易后台程序",
+            link: "http://188.131.188.209/admin",
+          },
+        ],
+        icon: "reco-api",
+      },
+      {
         text: "联系",
-        // ariaLabel: "Language Menu",
         items: [
           {
             text: "GitHub",
@@ -52,9 +62,10 @@ module.exports = {
           },
           { text: "微信", link: "/docs/contact/", icon: "reco-wechat" },
         ],
+        icon: "reco-mail",
       },
     ],
     // author
-    author: "zhang wei",
+    author: "张伟",
   },
 };
