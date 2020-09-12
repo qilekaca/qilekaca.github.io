@@ -15,7 +15,7 @@ tags:
 
 > [项目地址](http://188.131.188.209/admin)
 
-此项目为 web 版小程序的配套后台管理项目，主要使用 `vue + vue-admin-template` 和 [腾讯云云开发](https://cloudbase.net) 完成。这个完全使用云开发完成不需要借助 koa 等 node.js 程序。前端使用的库是 @cloudbase/js-sdk 云函数后端使用的是@cloudbase/manager-node 通过这两个库的搭配可以实现小程序的后台管理功能，不需要在借助 koa 来实现后端。
+此项目为 web 版小程序的配套后台管理项目，主要使用 `vue + vue-admin-template` 和 [腾讯云云开发](https://cloudbase.net) 完成。这个完全使用云开发完成不需要借助 koa 等 node.js 程序。前端使用的库是 @cloudbase/js-sdk 云函数后端使用的是`@cloudbase/manager-node` 通过这两个库的搭配可以实现小程序的后台管理功能，不需要在借助 koa 来实现后端。
 
 ## 项目功能
 
