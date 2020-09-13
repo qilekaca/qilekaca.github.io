@@ -14,6 +14,8 @@ tags:
 
 统一样式 reset.css 和添加 1px 边框 border.css，需要引入两个文件，此文件放置在 assets 文件夹下。移动端都有一个点击延迟，此时还需要使用一个 fastclick 库。在 main.js 中添加`fastClick.attach(document.body)`。因为移动端的项目所以还需要限制用户的缩放行为。在 index.html 文件下添加`<meta name="viewport" content=" width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />`
 
+<!-- more -->
+
 ## 目录结构
 
 ```js
