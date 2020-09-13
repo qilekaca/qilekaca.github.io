@@ -16,6 +16,8 @@ tags:
 4.  配置 package.json 在 scripts 下添加`"build": "webpack src/main.js"`
 5.  执行`npm run build`，如果没有问题的话会在项目的根目录下生成 dist 文件夹，并且内部含有 main.js
 
+<!-- more -->
+
 ## Awesome Webpack
 
 webpack 精妙之处便是其丰富的自定义配置，在根目录新建 build 文件夹并在此添加`webpack.config.js`
