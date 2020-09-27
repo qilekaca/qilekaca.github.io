@@ -1,7 +1,7 @@
 module.exports = {
   theme: "reco",
-  title: "Hello Vuepress",
-  description: "Just playing around",
+  title: "x_x",
+  description: "Life is what? Get busy living or get busy dying.",
   head: [
     [
       "meta",
@@ -13,6 +13,8 @@ module.exports = {
   ],
   themeConfig: {
     type: "blog",
+    authorAvatar:
+      "https://note-1256536434.cos.ap-beijing.myqcloud.com/img/IMG_2180.jpg",
     // 评论插件设置
     valineConfig: {
       appId: "cVeDcyaNPaN8F2PtXT7VCYdm-gzGzoHsz", // your appId
