@@ -1,4 +1,4 @@
----
+<!-- ---
 title: Vue 仿去哪网开发笔记
 date: 2020-03-03
 sidebar: "auto"
@@ -6,7 +6,8 @@ categories:
   - 前端
 tags:
   - Vue
----
+publish: false
+--- -->
 
 [项目地址](https://github.com/qilekaca/Travel)
 
