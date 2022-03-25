@@ -2,6 +2,7 @@
 Thumbs.db
 *.log
 node_modules/
-sources/.vuepress/dist/
 *.bat
 *.sh
+.vuepress/.cache
+.vuepress/.temp
