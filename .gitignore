@@ -6,3 +6,4 @@ node_modules/
 *.sh
 .vuepress/.cache
 .vuepress/.temp
+.vuepress/dist
