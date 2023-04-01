@@ -1,9 +1,0 @@
-.DS_Store
-Thumbs.db
-*.log
-node_modules/
-*.bat
-*.sh
-.vuepress/.cache
-.vuepress/.temp
-.vuepress/dist
