@@ -26,14 +26,13 @@
 #       - run: npm install
 #       - run: npm run docs:build --if-present
 #       - run: npm test
-                  
+
 #       - name: Deploy 🚀
 #         uses: JamesIves/github-pages-deploy-action@3.5.9
 #         with:
 #           GITHUB_TOKEN: ${{ secrets.DEPLOY_KEY }}
 #           BRANCH: gh-pages # The branch the action should deploy to.
 #           FOLDER: docs/.vuepress/dist # The folder the action should deploy.
-
 
 name: Deploy GitHub Pages
 
@@ -65,5 +64,4 @@ jobs:
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: docs/.vuepress/dist
-
+          FOLDER: src/.vuepress/dist
