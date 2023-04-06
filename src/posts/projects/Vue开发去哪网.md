@@ -1,7 +1,6 @@
 ---
 title: Vue 仿去哪网开发笔记
 date: 2020-03-03
-sidebar: "auto"
 categories:
   - 前端
 tags:
@@ -734,7 +733,7 @@ handleTouchMove(e) {
 function debounce(fn, wait) {
   var timer = null;
 
-  return function() {
+  return function () {
     var context = this,
       args = arguments;
 
@@ -755,7 +754,7 @@ function debounce(fn, wait) {
 function throttle(fn, delay) {
   var preTime = Date.now();
 
-  return function() {
+  return function () {
     var context = this,
       args = arguments,
       nowTime = Date.now();
