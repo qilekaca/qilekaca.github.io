@@ -1,7 +1,6 @@
 ---
 title: Koa实现简单的todolist
 date: 2020-06-27
-sidebar: "auto"
 categories:
   - 前端
   - 全栈
@@ -10,7 +9,6 @@ tags:
   - Node
   - MySQL
   - Docker
-sticky: 1
 ---
 
 ## 简介
