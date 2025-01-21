@@ -6,7 +6,7 @@ icon: people
 
 - 姓名 - 张伟
 - 应聘岗位 - 前端开发工程师
-- 联系电话：186-0337-4915 （同微信账号）
+- 联系电话：
 - 邮箱：zhangwei9803@163.com
 - GitHub: https://github.com/qilekaca
 - 个人博客：https://qilekaca.github.io
